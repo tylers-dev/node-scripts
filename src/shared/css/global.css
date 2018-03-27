@@ -1,0 +1,50 @@
+/* iOS Specific HTML */
+* {-webkit-user-select: none; /*-webkit-user-drag: none;*/ -webkit-tap-highlight-color: rgba(0,0,0,0);}
+
+/*---- RESET STYLE ----*/
+body, h1, h2, h3, h4, p {margin: 0;padding: 0; line-height: 1;}
+ul {list-style:none; margin:0; padding: 0;}
+ol {margin:0; padding: 0;}
+body {font-family:'HelveticaNeue'; font-weight:400;}
+
+section {display: block;}
+
+/*---- UTILITY STYLES ----*/
+.clear {clear: both;}
+br {line-height: 1;}
+.symbol {font-family: sans-serif !important; line-height: 0;}
+sup, sub {font-size: 50% !important; line-height: 0;}
+
+
+/*---- CONTENT AREA STYLES ----*/
+body { height:768px; width:1024px; background-color:#000; overflow:hidden; position:absolute; font-family:HelveticaNeue;}
+.container {position:absolute; top:95px; height: 607px; width:1024px; overflow:hidden; overflow-y:scroll;background-color:#fff;}
+
+footer {position: absolute; bottom: 0; z-index: 2; height: 52px; width: 100%; background: #000; color: #fff; font: 13px/13px HelveticaNeue-Bold;}
+.footer-pageindicator {color:#2690cd;position:absolute; top:20px; left:70px;}
+.footer-indications {position:absolute; top:20px; left:130px;}
+.footer-address {font: 10px/13px HelveticaNeue;position:absolute; top:20px; left:600px;}
+.info-icon {position: absolute;top: 12px;left: 880px;width: 26px;height: 26px;background: url('../images/GK-infobutton.png') 0 0 no-repeat;background-size: 26px 26px;}
+.footer-logo {position: absolute;top: 2px;left: 915px; background:url('../images/GK-logo.png') no-repeat; background-size:contain;height:52px; width:100px;}
+
+#info_bg {background:transparent}
+#info.popup {top: 544px;left: 662px; width: 300px; height: 172px;color: #000;}
+#info.popup .info-popup {padding-top: 21px; margin-left: 16px; width: 295px; height: 117px; }
+#info.popup .info-popup h3 {margin-bottom: 15px; font-family: 'DINCondensed-Bold'; font-size: 32px; color: #000;}
+#info.popup .info-popup p {margin-bottom: 10px;}
+#info.popup .info-popup span {display: block;}
+#info.popup .caret {position: absolute; top: 172px; left: 222px; width: 0; height: 0; color: #fff; border-left: 10px solid transparent;border-right: 10px solid transparent; border-top: 10px solid #fff;}
+
+.arrow {position:absolute; top:370px;  background:url('../images/gl-navarrow-FPO.png') no-repeat right center; background-size:30px 36px; height:56px; width:56px; display:none!important}
+.leftarrow {-webkit-transform:rotate(180deg);}
+.rightarrow {right:0;}
+.leftarrow.hidden, .rightarrow.hidden, .leftarrow.ISIhidden, .rightarrow.ISIhidden {display:none;}
+
+/* Popup library overrides */
+.popBg {background-color: transparent;}
+.popBtn {background:url('../images/gl-close.png') no-repeat; background-size: 90px 59px;width: 56px;height: 56px; background-position: 50%;top:0; left: 830px;}
+
+#isi {width: 1004px; height: 750px; left: 10px; top: 10px; border-radius: 0;}
+#isi_btn {background: url('../images/GK-ISI-close.png') no-repeat;background-size: contain;left: 950px;}
+#isi_btn.hiddenISIbutton {display:none;}
+.project-number {color: #fff; position: relative; top: 18px; left: 50px;}

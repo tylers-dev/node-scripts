@@ -1,0 +1,331 @@
+/*Styles from common.css*/
+
+#header-nav {
+    height: 86px;
+    top: 0;
+    background: #fff;
+}
+
+#header-nav span,
+#header-nav #logo {
+    display: none !important;
+}
+
+footer {
+    display: none;
+}
+
+.grey-btn {
+    background: url(../../shared/../images/grey-btn-arrow.png) no-repeat center center / 24px, rgba(83, 83, 83, .75);
+    position: absolute;
+    bottom: 0;
+    left: 452px;
+    height: 29px;
+    width: 118px;
+    display: block;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+}
+
+
+/******************/
+
+
+/*PATIENT PROFILES*/
+
+.topblackbar {
+    visibility: hidden;
+}
+
+.container {
+    height: 685px;
+    position: relative;
+    top: 70px;
+    background: #113b71;
+    /* For browsers that do not support gradients */
+    background: linear-gradient(to bottom right, #113b71, #6b1455);
+    /* Standard syntax */
+    background-size: 1024px 685px;
+    font-family: 'SanFran-Regular';
+}
+
+#innercontainer {
+    position: absolute;
+    top: 0;
+    width: 1024px;
+    height: 685px;
+}
+
+h1 {
+    font: 60px/1 'SanFran-Heavy';
+    color: #fff;
+}
+
+.subhead {
+    font: 17px 'SanFran-Medium';
+    color: #FFF;
+}
+
+.panel {
+    height: 685px;
+}
+
+.movable {
+    position: relative
+}
+
+#jasonpic {
+    background: url(../../shared/images/PP-Jason-pic.png) no-repeat;
+    background-size: 348px 640px;
+    width: 348px;
+    height: 640px;
+    position: fixed;
+    top: 130px;
+    left: 60px;
+    -webkit-transition: all .2s linear;
+}
+
+#willpic {
+    background: url(../../shared/images/PP-Will-pic.png) no-repeat;
+    background-size: 578px 647px;
+    width: 578px;
+    height: 647px;
+    position: fixed;
+    left: 50px;
+    top: 768px;
+    -webkit-transition: all .5s ease-in-out;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#jessicapic {
+    background: url(../../shared/images/PP-Jessica-pic.png) no-repeat;
+    background-size: 295px 648px;
+    width: 295px;
+    height: 648px;
+    position: fixed;
+    left: 1024px;
+    top: 120px;
+    -webkit-transition: all .5s ease-in-out
+}
+
+
+/* Panel 1 content */
+
+#ellipses {
+    background: url(../../shared/images/PP-Ellipses.png) no-repeat;
+    background-size: 100%;
+    width: 1159px;
+    height: 550px;
+    position: absolute;
+    top: 64px;
+    left: -126px;
+    -webkit-transition: opacity .5s ease-in-out
+}
+
+#jasonplussign {
+    background: url(../../shared/images/PP-Plus-sign.png) no-repeat;
+    background-size: 188px 88px;
+    width: 188px;
+    height: 88px;
+    position: absolute;
+    top: 450px;
+    left: 325px;
+    -webkit-transition: opacity .5s ease-in-out
+}
+
+.headlinetext {
+    width: 529px;
+    height: 95px;
+    position: absolute;
+    top: 108px;
+    left: 343px;
+    -webkit-transition: opacity .5s ease-in-out
+}
+
+.headlinetext .subhead {
+    margin-top: 4px;
+    letter-spacing: 0.6px;
+}
+
+.tapareajason {
+    position: absolute;
+    height: 88px;
+    width: 188px;
+    top: 450px;
+    left: 325px;
+    -webkit-transition: opacity .5s ease-in-out
+}
+
+#willpicsmall {
+    background: url(../../shared/images/PP-Will-small-pic.png) no-repeat;
+    background-size: 130px 225px;
+    width: 130px;
+    height: 225px;
+    position: absolute;
+    left: 594px;
+    top: 326px;
+    -webkit-transition: opacity .5s ease-in-out
+}
+
+#willpicsmall p {
+    width: 110px;
+    position: absolute;
+    left: -114px;
+    top: 81px;
+    text-align: right;
+    font: 12px "SanFran-Regular";
+    color: #FFF;
+}
+
+#willpicsmall p strong {
+    font: normal 14px "SanFran-Bold";
+}
+
+#jessicapicsmall {
+    background: url(../../shared/images/PP-Jessica-small-pic.png) no-repeat;
+    background-size: 100px 275px;
+    width: 100px;
+    height: 275px;
+    position: absolute;
+    left: 811px;
+    top: 316px;
+    -webkit-transition: opacity .5s ease-in-out
+}
+
+#jessicapicsmall p {
+    width: 110px;
+    position: absolute;
+    left: -95px;
+    top: 169px;
+    text-align: right;
+    font: 12px "SanFran-Regular";
+    color: #FFF;
+}
+
+#jessicapicsmall p strong {
+    font: normal 14px "SanFran-Bold";
+}
+
+
+/* Panel 2 content */
+
+.quote {
+    width: 358px;
+    height: 358px;
+    left: 498px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: rgba(46, 194, 249, 0.25);
+    box-shadow: 0 0 0 9px rgba(255, 255, 255, 0.09);
+}
+
+.quote h2 {
+    font: 65px/1 'SanFran-Heavy';
+    color: #fff;
+    position: relative;
+    top: 69px;
+    text-align: center;
+}
+
+.quote p {
+    font: 19px/1.7 'SanFran-Regular';
+    color: #FFF;
+    position: relative;
+    top: 108px;
+    text-align: center;
+}
+
+
+/* Panel 3 content */
+
+.story {
+    width: 415px;
+    height: 450px;
+    top: 50px;
+    left: 477px;
+}
+
+.story h2 {
+    font: 46px/1 'SanFran-Heavy';
+    color: #fff;
+    position: relative;
+    top: -7px;
+}
+
+.story div {
+    height: 377px;
+    margin-top: 25px;
+    padding: 42px 0 0 52px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.story ul {
+    padding-left: 15px;
+    margin-bottom: 22px;
+    font: 12px 'SanFran-Regular';
+    list-style-type: initial;
+    text-indent: -8px;
+    color: #FFF;
+}
+
+.story ul li {
+    margin-bottom: 8px;
+}
+
+.story ul li span {
+    margin-left: -8px;
+}
+
+.story h3 {
+    font: 12px/1 'SanFran-Bold';
+    color: #FFF;
+}
+
+.story p {
+    margin-bottom: 24px;
+    font: 12px/1.44 'SanFran-Regular';
+    color: #FFF;
+}
+
+
+/* Panel 4 content */
+
+#jessicacircle {
+    top: 50px;
+    left: 140px;
+}
+
+
+/* Panel 5 content */
+
+#jessicabox {
+    left: 190px;
+}
+
+
+/* Panel 6 content */
+
+#willcircle {
+    top: 50px;
+}
+
+
+/* Panel 7 content */
+
+.slideout {
+    margin-top: 46px;
+}
+
+.slideout ul {
+    padding: 41px 0 0;
+    background: none;
+    margin: 15px 0 0 97px;
+}
+
+.slideout ul li {
+    display: inline-block;
+    margin: 26px 30px;
+    padding: 0 0 0 0;
+}

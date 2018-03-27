@@ -1,0 +1,263 @@
+.avinotification {
+	height: 14px;
+    width: 14px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #ff0000;
+    padding: 3px 3px 4px 3px;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .3);
+    position: absolute;
+    left: 980px;
+    top: 15px;
+    z-index: 1;
+}
+
+.avinotification.empty {
+	display:none;	
+}
+
+.trainingbutton {
+	height: 56px;
+    width: 90px;
+    position: absolute;
+    top: 615px;
+    left: 15px;
+	background:url("../images/catherine-logo-white.png") no-repeat;
+	background-size:42px 48px; 
+}
+
+#trainingmode {
+	top: 38px;
+    background-color: transparent;
+    left: 10px;
+    box-shadow: 0px 0px 0 rgba(0, 0, 0, .3);
+}
+
+#trainingmode .popBtn {
+	display:none;
+}
+
+#trainingmode_bg.active {
+	background-color: #fff;
+    opacity: .7;
+}
+
+.traingmodecontent {
+	position: absolute;
+    top: 200px;
+    left: 200px;
+    height: 150px;
+	padding:30px 0 0 0;
+    width: 600px;
+    background: rgba(102, 102, 102, .8);
+    border-radius: 10px;
+	color:#fff;
+	text-align:center;
+	font:20px/22px 'AvenirNext-Regular';
+}
+
+.trainingselectbutton {
+	border:1px solid #fff;
+	border-radius:30px;
+	padding:10px;
+	width:100px;
+	text-align:center;	
+	display:inline-block;
+	margin:20px 20px 0 0;
+}
+
+#avi {
+	color:#000;
+	font:20px/22px 'AvenirNext-Regular';
+	top: 88px;
+    left: 2px;
+    width: 1020px;
+    height: 678px;
+    border-radius: 0;
+	background-color: rgba(255, 255, 255, .9);
+}
+
+#avi .popBtn {
+    top: 0;
+    left: 960px;
+}
+
+.avi-left {
+	position:absolute;
+	top:70px;
+	left:100px;
+	width: 450px;
+}
+
+.avi-right {
+	position:absolute;
+	top:70px;
+	left:600px;
+	width: 400px;
+}
+
+.avi-subjectlist {
+	border-left: 2px solid #d5d7d8;
+    height: 530px;
+    position: relative;
+    left: -20px;
+    padding: 20px 0 0 20px;
+}
+
+.avi-chatwindowheadline {
+	margin:0 0 20px 0	
+}
+
+.avi-response {
+	margin:15px 0 0 0;	
+	float:left;
+	clear:both
+}
+
+.avi-response::before {
+	content: '';
+    display: inline-block;
+    height: 48px;
+    width: 40px;
+    background: url(../images/catherine-logo.png) no-repeat;
+    background-size: contain;
+    margin: 0 10px 0 0;
+    position: relative;
+    top: -2px;
+    vertical-align: top;
+}
+
+.avi-textresponse {
+	font:15px/17px 'AvenirNext-Regular';
+	color:#fff;
+	background: linear-gradient(to right, rgba(114, 17, 84, 1) 0%, rgba(6, 63, 116, 1) 100%);
+	border-radius: 20px;
+    padding: 10px 15px;
+	display: inline-block;
+	max-width: 340px;
+}
+
+.user-response {
+	font:15px/17px 'AvenirNext-Regular';
+	color:#fff;
+	background: rgba(6, 63, 116, 1);
+	border-radius: 20px;
+    padding: 10px 15px;
+	display: inline-block;
+	float: right;
+	margin:15px 0 0 0;	
+	clear:both
+}
+
+
+.avi-subject {
+	font:15px/15px 'AvenirNext-Regular';
+	color:#C55879;
+	padding:5px 0;
+	margin:0 0 5px 0;
+}
+
+.avi-response.buttons {
+	text-align:center;	
+	font:12px/15px 'AvenirNext-Regular';
+	margin: 0 0 0 50px;
+}
+
+.avi-response.buttons::before {
+	content: '';
+    display: inline-block;
+    height: 0;
+    width: 0;
+    background: transparent;
+    background-size: contain;
+    margin: 0 10px 0 0;
+    position: relative;
+    top: -10px;
+    vertical-align: top;
+}
+.buttongroup {
+	width: 300px;
+    display: inline-block;	
+}
+
+
+#avi.avilight {
+	width: 340px;
+	position: absolute;
+    width: 450px;
+    height: 100px;
+    left: 0px;
+    top: 50px;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0px 0px 0 rgba(0, 0, 0, .3);
+}
+
+
+#avi.avilight .avi-left {
+	top:0;
+	left:0;
+}
+
+#avi.avilight .avi-chatwindowheadline{
+	display:none
+}
+
+#avi.avilight .avi-right {
+	display:none
+}
+
+#avi.avilight .popBtn {
+	display:none
+}
+
+.avi-button {
+	font: 15px/17px 'AvenirNext-Regular';
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: #fff;
+    background: rgba(6, 63, 116, 1);
+    display: block;
+    min-width: 90px;
+    margin: 5px auto -8px auto;
+    text-align: center;
+}
+
+#avi.avilight .avi-button {
+    display: inline-block;
+    min-width: 90px;
+    margin: 5px auto -5px auto;
+    text-align: center;
+}
+
+#avi.avilight #avicontinuebutton {
+	margin: 2px auto -5px auto;
+}
+
+
+.touchpoint {height:18px; width:18px; border-radius:9px; background:rgba(102, 102, 102, .9); position:absolute; top:200px; left:300px;box-shadow:0 0 45px rgba(102, 102, 102, 1); transition:transform .15s ease-in-out; transform:scale(0);z-index: 8000;}
+.touchpoint.active{transform:scale(1);}
+
+
+
+.accountpresent .avinotification, .accountpresent .trainingbutton {display:none}
+
+
+
+/*  APDIVAN page specific styles, dont include with library */
+.scaleddouble #avi {
+	top: 52px;
+    left: 2px;
+    height: 715px;
+}
+
+.scaleddouble #avi.avilight {
+	height: 100px;
+}
+
+/*Patient Profiles specific, dont include with library */
+.patientprofiles #avi.avilight {
+	top: 15px;
+	height: 100px;
+}

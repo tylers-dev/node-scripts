@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Veeva Remote</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="jquery.mobile.custom.min.js"></script>
+    <style>
+        body{
+          background: #000;
+        }
+        #connection-screen{
+          position: fixed;
+          width:100%;
+          height:100%;
+          display:flex;
+          flex-direction: column;
+          background: #c6c9b9;
+          z-index:9;
+          transition: all .5s ease-in-out;
+        }
+        body.hide-connect-screen #connection-screen{
+          -webkit-transform:translateY(-110%);
+          transform:translateY(-110%);
+        }
+        #connection-screen > .inner{
+          flex:0 0 auto;
+          margin:auto;
+        }
+        #connection-screen > .inner > *{
+          display:block;
+          margin:5vh auto;
+          text-align:center;
+        }
+        p, input, button{
+          font-family: 'Titillium Web', sans-serif;
+          text-transform: uppercase;
+          font-size:24px;
+        }
+        button{
+          padding:6px 18px;
+          background:#f0f3e1;
+          border-radius:8px;
+        }
+        #logo{
+          display:block;
+          width:100px;
+          -webkit-filter: drop-shadow(3px 3px 3px #222);
+          filter: drop-shadow(3px 3px 3px #222);
+          margin-top:0 !important;
+          margin-bottom:10vh !important;
+        }
+        #remoteCode{
+          font-size:54px;
+          width:100%;
+          background:#f0f3e1;
+          border:none;
+          max-width: 400px;
+        }
+        #connectBtn{
+          font-size:26px;
+          -moz-box-shadow: 0px 10px 14px -7px #000;
+        	-webkit-box-shadow: 0px 10px 14px -7px #000;
+        	box-shadow: 0px 10px 14px -7px #000;
+          border:1px solid rgba(0,0,0,.6);
+          transition: all .2s;
+        }
+        #connectBtn.connecting{
+          background:yellow;
+        }
+        #connectBtn.connected{
+          background:green;
+          color:white;
+        }
+        #connection-screen .error{
+          display:none;
+          color:red;
+          padding-left:10px;
+          width: auto !important;
+          vertical-align: middle !important;
+        }
+        #isi-btn{
+          position:fixed;
+          top:50%;
+          left:50%;
+          z-index:8;
+          -webkit-transform:translate(-50%, -50%);
+          transform:translate(-50%, -50%);
+        }
+        #screenshot{
+          width:100%;
+        }
+        .form-group{
+          margin:0;
+        }
+        #canvas-container{
+          width:100%;
+          height:0;
+          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        #loading-icon{
+          display:none;
+          position:fixed;
+          top:50%;
+          left:50%;
+          z-index:8;
+          -webkit-transform:translate(-50%, -50%);
+          transform:translate(-50%, -50%);
+          background: url("loading.svg") center center no-repeat;
+          background-size:contain;
+          width:40%;
+          height:40%;
+        }
+        body.loading #loading-icon{
+          display:block;
+        }
+    </style>
+</head>
+<body>
+  <div id="connection-screen">
+    <div class="inner">
+      <img id="logo" src="logo.png" alt="">
+      <p class="instruction">Enter 4 Digit Remote Code:</p>
+      <input id="remoteCode" type="number" placeholder="####" maxlength="4">
+      <button id="connectBtn" type="button" class="btn btn-default">Connect</button>
+      <p class="error">Connection error. Please check code.</p>
+    </div>
+  </div>
+  <div id="canvas-container">
+    <div id="loading-icon"></div>
+    <img id="screenshot"></img>
+  </div>
+
+  <script type="text/javascript">
+
+    //var sock = new WebSocket('ws://' + location.host + ':443');
+    var sock = new WebSocket('ws://52.54.226.144:443');
+    sock.binaryType = "arraybuffer";
+    var activeConnection = false,
+        remoteCode = null,
+        disconnectTimeout;
+    sock.onopen = function(e){
+      console.log("Socket connected sucessfully");
+      sock.onmessage = function(msg){
+        if (typeof msg.data == "string") {
+          //String
+          var data = JSON.parse(msg.data);
+          switch(data.status){
+
+            //Successful connection to a presentation client, pending approval
+            case "wss-success":
+              activeConnection = true;
+              clearTimeout(disconnectTimeout);
+              connectBtn.innerHTML = "Connecting";
+              connectBtn.classList.add("connecting");
+              setLastCode(remoteCode);
+            break;
+
+            //Lost connection with paired client
+            case "wss-disconnect":
+              activeConnection = false;
+              disconnectTimeout = setTimeout(function(){
+                fullDisconnect();
+              },5000)
+
+            break;
+
+            //Errors
+            case "wss-error":
+              console.log(data.msg)
+            break;
+
+            //Show forced isi
+            case "forcedisi":
+              if(activeConnection) showForcedISIButton();
+            break;
+
+            //Waiting approval
+            case "waiting":
+              if(activeConnection) connectBtn.innerHTML = "Waiting Approval";
+            break;
+
+            //Button selected, response that button was selected, waiting for screenshot to load
+            case "button-pressed":
+              //loading
+              if(activeConnection) document.body.classList.add("loading");
+            break;
+
+          }
+        }else{
+          var arrayBuffer = msg.data;
+          var image = document.getElementById('screenshot');
+          image.src = "data:image/jpeg;base64,"+_arrayBufferToBase64(arrayBuffer);
+          connectBtn.innerHTML = "Connected";
+          connectBtn.classList.add("connected");
+          document.body.classList.add("hide-connect-screen");
+          document.body.classList.remove("loading");
+        }
+
+      }
+      sock.onclose = function(){
+        fullDisconnect();
+      }
+      //Connect Button action
+      document.getElementById("connectBtn").addEventListener("touchend", connectBtnEvt)
+      function connectBtnEvt(){
+        remoteCode = document.getElementById("remoteCode").value;
+        if(remoteCode.length>4){
+          connectError.style.display = "inline-block";
+          return false;
+        }
+        sock.send(JSON.stringify({
+          status:"wss-activate",
+          type: "remote",
+          remoteCode:remoteCode
+        }));
+        sock.send(JSON.stringify({
+          status:"wss-pairing",
+          remoteCode:remoteCode
+        }));
+      }
+
+      //Check for remote code url query
+      var rcQuery = getUrlParameter("rc");
+      if(parseInt(rcQuery) <= 9999){
+        document.getElementById("remoteCode").value = rcQuery;
+        connectBtnEvt();
+      }
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      };
+
+      //Activate remote app with the server
+      if(remoteCode){
+        sock.send(JSON.stringify({
+          status:"wss-activate",
+          remoteCode:remoteCode
+        }));
+      }
+    }
+
+    //Send navigation tap points
+    $("#screenshot").on("touchstart", function(e){
+      $(this)[0].touchMoved = false;
+      $(this)[0].startX = e.originalEvent.touches[0].pageX;
+      $(this)[0].startY = e.originalEvent.touches[0].pageY;
+      $(this).on("touchmove", screenshotTouchMove);
+      function screenshotTouchMove(e){
+        if(Math.abs(e.originalEvent.touches[0].pageX - $(this)[0].startX) > 5){
+          $(this)[0].touchMoved = true;
+        }
+      }
+      $(this).one("touchend", function(e){
+        $(this).off("touchmove", "", screenshotTouchMove);
+        if(!$(this)[0].touchMoved){
+          screenshotTap(e);
+        }
+      })
+    })
+    function screenshotTap(e){
+      var offTop = $("#screenshot").offset().top;
+      var xPerc = e.originalEvent.changedTouches[0].pageX/$("#screenshot").width();
+      var yPerc = (e.originalEvent.changedTouches[0].pageY-offTop)/$("#screenshot").height();
+      sock.send(JSON.stringify({
+        status:"touch",
+        data:{
+          xPerc:xPerc,
+          yPerc:yPerc
+        }
+      }));
+    }
+
+    //Swipe navigation
+    $(window).on("swipeleft", function(){
+      if(activeConnection) sock.send(JSON.stringify({ status:"swipe_left" }));
+    })
+    $(window).on("swiperight", function(){
+      if(activeConnection) sock.send(JSON.stringify({ status:"swipe_right" }));
+    })
+
+    //Convert binary to base64
+    function _arrayBufferToBase64( buffer ) {
+        var binary = '';
+        var bytes = new Uint8Array( buffer );
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode( bytes[ i ] );
+        }
+        return window.btoa( binary );
+    }
+
+    //Auto reconnect
+    function setLastCode(code){
+      localStorage.setItem("remoteCode", code);
+    }
+    function getLastCode(code){
+      var lastCode = localStorage.getItem("remoteCode") || "";
+      if(lastCode){
+        $("#remoteCode").val(lastCode);
+      }
+    }
+    getLastCode();
+
+    //Show forced isi
+    function showForcedISIButton(){
+      console.log("forced isi")
+      $("<button id='isi-btn'>Close ISI</button>").appendTo($("body")).one("touchend", function(){
+        $(this).remove();
+        sock.send(JSON.stringify({ status:"close_isi" }));
+      })
+    }
+
+    //Full disconnect
+    function fullDisconnect(){
+      sock.close()
+      document.getElementById('screenshot').src = "";
+      document.body.classList.remove("hide-connect-screen");
+      connectBtn.innerHTML = "Connect";
+      connectBtn.classList.remove("connected");
+      connectBtn.classList.remove("connecting");
+    }
+
+  </script>
+</body>
+</html>

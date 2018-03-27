@@ -1,0 +1,90 @@
+/************************************************************************
+
+FONTS CSS 
+Intouch Solutions
+
+************************************************************************/
+
+@font-face {
+    font-family: SanFran-Ultralight;
+    src: url(../fonts/SanFranciscoDisplay-Ultralight.otf);
+}
+
+@font-face {
+    font-family: SanFran-Light;
+    src: url(../fonts/SanFranciscoDisplay-Light.otf);
+}
+
+@font-face {
+    font-family: SanFran-Thin;
+    src: url(../fonts/SanFranciscoDisplay-Thin.otf);
+}
+
+@font-face {
+    font-family: SanFran-Regular;
+    src: url(../fonts/SanFranciscoDisplay-Regular.otf);
+}
+
+@font-face {
+    font-family: SanFran-Medium;
+    src: url(../fonts/SanFranciscoDisplay-Medium.otf);
+}
+
+@font-face {
+    font-family: SanFran-Bold;
+    src: url(../fonts/SanFranciscoDisplay-Bold.otf);
+}
+
+@font-face {
+    font-family: SanFran-Heavy;
+    src: url(../fonts/SanFranciscoDisplay-Heavy.otf);
+}
+
+@font-face {
+	font-family: 'OpenSans300';
+	src: local('☺'), url('../fonts/OpenSans300.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSans600italic';
+	src: local('☺'), url('../fonts/OpenSans600italic.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSans700italic';
+	src: local('☺'), url('../fonts/OpenSans700italic.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansHebrewCondensed-Regular';
+	src: local('☺'), url('../fonts/OpenSansHebrewCondensed-Regular.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansitalic';
+	src: local('☺'), url('../fonts/OpenSansitalic.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Myriad-Pro-italic';
+	src: local('☺'), url('../fonts/MyriadPro-It.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Myriad-Pro-regular';
+	src: local('☺'), url('../fonts/MyriadPro-Regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}

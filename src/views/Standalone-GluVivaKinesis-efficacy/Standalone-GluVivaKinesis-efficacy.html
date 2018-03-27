@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="YES" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Efficacy</title>
+
+    <!-- CSS - Global and Module Level -->
+    <link rel="stylesheet" href="../shared/css/popup.css" type="text/css">
+    <link rel="stylesheet" href="../shared/css/fonts.css" type="text/css">
+    <link rel="stylesheet" href="../shared/css/common.css" type="text/css">
+    <!--<link rel="stylesheet" href="../shared/css/global.css" type="text/css">-->
+    <!--<link rel="stylesheet" href="../shared/css/kinesis.appnav.css" type="text/css">-->
+    <link rel="stylesheet" href="../shared/css/pagetransistion.css" type="text/css">
+
+    <!-- CSS - Page Level -->
+    <link rel="stylesheet" href="styles/styles.css" type="text/css">
+</head>
+
+<body class="disableclick" data-trackingabbreviation="FPO">
+    <!--<audio id="beep" src="../shared/audio/popBeep.mp3" preload="metadata" property="og:audio"></audio>-->
+    <div id="pagecontenttransition" class="hidecontent">
+        <div class="container">
+            <!-- CONTENT GOES HERE -->
+            <div class="left-content">
+                <h1>EFFICACY</h1>
+                <p class="subhead">Along with diet, exercise and other diabetes medications, Jason achieved long-acting, effective glycemic control with GluViva.</p>
+                <span>Injection sites should be rotated between these three areas. The rate of absorption for GluViva is similar for all three.</span>
+
+                <div class="btn-weeks">
+                    <div id="week1" class="btn btn-1 active remotebtn"><span>Week 1</span></div>
+                    <div id="week4" class="btn btn-2 remotebtn"><span>Week 4</span></div>
+                    <div id="week10" class="btn btn-3 remotebtn"><span>Study<br>End</span></div>
+                </div>
+            </div>
+
+            <img src="../shared/images/efficacy-chart-base.png" id="chart-base" width="798" height="448" alt="chart" class="chart-base" />
+            <img src="../shared/images/efficacy-chart1.png" id="chart1" width="118" height="221" alt="chart" class="chart" />
+            <img src="../shared/images/efficacy-chart2.png" id="chart2" width="345" height="316" alt="chart" class="chart" />
+            <img src="../shared/images/efficacy-chart3.png" id="chart3" width="692" height="485" alt="chart" class="chart" />
+            <!-- END CONTENT GOES HERE -->
+        </div>
+        <!-- //container -->
+        <!-- Global App Navigation -->
+        <div id="header-nav" class="nav-bg">
+            <div class="homebutton remotebtn"></div>
+        </div>
+        <div id="leftnavigationalarrow" class="arrow leftarrow" ontouchend="goPrev()"></div>
+        <div id="rightnavigationalarrow" class="arrow rightarrow" ontouchend="goNext()"></div>
+
+        <!-- //Global App Navigation -->
+        <div class="slideout">
+            <div class="grey-btn remotebtn"></div>
+            <ul id="swimlaneUL">
+
+            </ul>
+        </div>
+    </div>
+    <div id="isi" class="popup inactive button slidedown" frame="../shared/isi-frame.html" popBg="1"></div>
+    <!-- Javascript -->
+    <script type="text/javascript" src="../shared/js/kinesis.lib/veeva-library-4.1.js"></script>
+    <!-- <script type="text/javascript" src="../shared/js/kinesis.lib/iRep-tracking.js"></script> -->
+    <script type="text/javascript" src="../shared/js/kinesis.lib/popups.min.js"></script>
+
+    <script type="text/javascript">
+        var zipName = "Standalone-GluVivaKinesis-efficacy.zip";
+        var dsaId = "StandaloneGluVivaKinesisSummitExample";
+    </script>
+
+    <script type="text/javascript" src="../shared/js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="../shared/js/kinesis.lib/TweenMax.min.js"></script>
+    <script type="text/javascript" src="../shared/js/html2canvas.js"></script>
+    <script type="text/javascript" src="../shared/js/remote.js"></script>
+    <script type="text/javascript" src="../shared/js/kinesis.appnav.js"></script>
+
+    <script type="text/javascript" src="../shared/js/kinesis.lib/kinesisBase-v1.0.js"></script>
+    <script type="text/javascript" src="../shared/js/TileData.js"></script>
+    <script type="text/javascript" src="../shared/js/forcedISI.js"></script>
+    <script type="text/javascript" src="../shared/js/kinesis.lib/kinesisNavigation.js"></script>
+
+    <!-- PUT YOUR PAGE SCRIPTS HERE -->
+    <script>
+        $(document).ready(function() {
+            var btnWeek1 = document.getElementById("week1");
+            var btnWeek4 = document.getElementById("week4");
+            var btnWeek10 = document.getElementById("week10");
+
+            var chartCount = 0;
+
+            var inAnimation = false,
+                animate = true,
+                interval,
+                replay = false;
+
+
+            //ONCLICKS:
+            $(btnWeek1).on('touchend', function() {
+                clearInterval(interval);
+                setBtnActive(1);
+                animate = false;
+                setChart(1);
+            });
+            $(btnWeek4).on('touchend', function() {
+                clearInterval(interval);
+                setBtnActive(2);
+                animate = false;
+                setChart(2);
+            });
+            $(btnWeek10).on('touchend', function() {
+                clearInterval(interval);
+                setBtnActive(3);
+                animate = false;
+                setChart(3);
+            });
+
+            function setBtnActive(btnNumber) {
+                $('.btn-weeks .btn').removeClass('active');
+                $('.btn-weeks .btn-' + btnNumber).addClass('active');
+            }
+
+            function replayChart() {
+                clearInterval(interval);
+                chartCount = 0;
+                $("#chart2").fadeOut();
+                $("#chart3").fadeOut();
+                interval = setInterval(setChartRight, 800);
+            }
+
+
+            function setChart(touchedID) {
+                if (inAnimation && !animate) {
+                    return
+                };
+
+                inAnimation = true;
+                if (touchedID === "chartRight") {
+                    chartCount -= 1;
+                } else if (touchedID === "chartLeft") {
+                    chartCount += 1;
+                } else {
+                    chartCount = touchedID;
+                }
+
+                switch (chartCount) {
+                    case -1:
+                        setBtnActive(2);
+                        $("#chart2").fadeIn();
+                        $("#chart1").fadeOut('slow');
+                        $("#chart3").fadeOut('slow');
+                        break;
+                    case -2:
+                        setBtnActive(3);
+                        $("#chart3").fadeIn();
+                        $("#chart1").fadeOut('slow');
+                        $("#chart2").fadeOut('slow');
+
+                        $("#replay").show();
+
+                        clearInterval(interval);
+                        break;
+                    case 1:
+                        $("#chart1").fadeIn();
+                        $("#chart2").fadeOut('slow');
+                        $("#chart3").fadeOut('slow');
+                        break;
+                    case 2:
+                        $("#chart2").fadeIn();
+                        $("#chart1").fadeOut('slow');
+                        $("#chart3").fadeOut('slow');
+                        break;
+                    case 3:
+                        $("#chart3").fadeIn();
+                        $("#chart1").fadeOut('slow');
+                        $("#chart2").fadeOut('slow');
+                        break;
+                    default:
+                        $("#chart2").fadeOut('slow');
+                        $("#chart3").fadeOut('slow');
+                        break;
+                }
+                inAnimation = false;
+            }
+            interval = setInterval(setChartRight, 800);
+
+            function setChartRight() {
+                replay = true;
+                setChart('chartRight');
+                console.log("playing")
+            }
+
+            $('.grey-btn').on("touchend", function() {
+                $('.slideout').toggleClass('slideout-open');
+            });
+        });
+    </script>
+    <!-- END PUT YOUR PAGE SCRIPTS HERE -->
+    <script type="text/javascript" src="../shared/js/slideDynamicRecapEmailRecorder.js"></script>
+
+    <script type="text/javascript" src="../shared/js/kinesis.lib/page-bounce.js"></script>
+    <script type="text/javascript" src="../shared/js/kinesis.lib/page-transitions.js"></script>
+    <!-- <script type="text/javascript" src="../shared/js/trackingConstructor.js"></script> -->
+</body>
+
+</html>

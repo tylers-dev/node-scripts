@@ -1,0 +1,121 @@
+.opencatherine {
+	height:60px;
+	width:60px;
+	background:url(../images/catherine-logo-white.png) no-repeat;
+	position:absolute;
+	top: 591px;
+    left: -50px;
+	background-size: contain;	
+}
+
+#avi {
+	color:#000;
+	font:20px/22px 'AvenirNext-Regular';
+	top: 88px;
+    left: 2px;
+    width: 1020px;
+    height: 678px;
+    border-radius: 0;
+	background-color: rgba(255, 255, 255, .9);
+}
+
+#avi .popBtn {
+    top: 0;
+    left: 960px;
+}
+
+.avi-left {
+	position:absolute;
+	top:70px;
+	left:100px;
+	width: 450px;
+}
+
+.avi-right {
+	position:absolute;
+	top:70px;
+	left:600px;
+	width: 400px;
+}
+
+.avi-chatwindowheadline {
+	margin:0 0 20px 0	
+}
+
+.avi-response {
+	margin:15px 0 0 0;	
+	float:left;
+	clear:both
+}
+
+.avi-response::before {
+	content: '';
+    display: inline-block;
+    height: 48px;
+    width: 40px;
+    background: url(../images/catherine-logo.png) no-repeat;
+    background-size: contain;
+    margin: 0 10px 0 0;
+    position: relative;
+    top: -5px;
+    vertical-align: top;
+}
+
+.avi-textresponse {
+	font:15px/17px 'AvenirNext-Regular';
+	color:#fff;
+	background: linear-gradient(to right, rgba(114, 17, 84, 1) 0%, rgba(6, 63, 116, 1) 100%);
+	border-radius: 20px;
+    padding: 10px 15px;
+	display: inline-block;
+	max-width: 340px;
+}
+
+.user-response {
+	font:15px/17px 'AvenirNext-Regular';
+	color:#fff;
+	background: rgba(6, 63, 116, 1);
+	border-radius: 20px;
+    padding: 10px 15px;
+	display: inline-block;
+	float: right;
+	margin:15px 0 0 0;	
+	clear:both
+}
+
+.avi-topic {
+	font:15px/15px 'AvenirNext-Regular';
+	color:#C55879;
+}
+
+#avi.avilight {
+	width: 340px;
+	position: absolute;
+    width: 450px;
+    height: 100px;
+    left: 0px;
+    top: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0px 0px 0 rgba(0, 0, 0, .3);
+}
+
+#avi.avilight .avi-left {
+	top:0;
+	left:0;
+}
+
+#avi.avilight .avi-chatwindowheadline{
+	display:none
+}
+
+#avi.avilight .avi-right {
+	display:none
+}
+
+#avi.avilight .popBtn {
+	display:none
+}
+
+.avi-button {font:15px/17px 'AvenirNext-Regular';border-radius: 20px;padding: 10px 15px;color:#fff;
+	background: rgba(6, 63, 116, 1);
+	border-radius: 20px;display: inline-block;}

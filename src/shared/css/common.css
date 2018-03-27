@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header-nav {
+    height: 86px;
+    background: #fff;
+}
+
+.homebutton {width:55px; height:55px; position:absolute;left: 945px; top: 18px; z-index: 1;}
+
+#header-nav::before {
+    content: '';
+    display: block;
+    position: relative;
+    top: 16px;
+    height: 48px;
+    background: url(../images/GK-logo.png) no-repeat center center / contain;
+    margin: auto;
+}
+
+#header-nav::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 57px;
+    height: 58px;
+    right: 20px;
+    top: 17px;
+
+    background: url('../images/GL-homebutton.png') no-repeat center center;
+	background-size:contain;
+}
+
+/* Slideout component */
+.slideout {
+    background: rgba(255, 255, 255, .90);
+    bottom: -489px;
+    left: 108px;
+    position: fixed;
+    width: 809px;
+    height: 489px;
+	z-index:2
+ 
+}
+.slideout > .grey-btn {
+    background: rgba(83, 83, 83, .75);
+    position: fixed;
+    bottom: 0;
+    left: 452px;
+    height: 29px;
+    width: 118px;
+    border-radius: 5px 5px 0 0;
+    display: block;
+    cursor: pointer;
+}
+.slideout.slideout-open {
+    bottom: 0px;
+}
+.slideout-open > .grey-btn {
+    bottom: 489px;
+}
+.slideout-open > .grey-btn::before {
+    transform: rotate(180deg);
+}   
+.grey-btn::before {
+    background: url(../images/grey-btn-arrow.png) no-repeat center center / 24px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* Transitions */
+.slideout,
+.grey-btn,
+.grey-btn::before {
+    -webkit-transition: all .5s  ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.profile {
+    border-radius: 50%;
+    margin: 0 auto;
+    opacity: 0.95; /* fix */
+    overflow: hidden;
+    position: relative;
+    width: 145px;
+    height: 145px;
+    -webkit-box-shadow: 0px 0px 39px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 0px 39px 0px rgba(0,0,0,0.55);
+}
+.profile > img {
+    width: 120%;
+	height: 120%;
+    position: relative;
+    top: -15px;
+    left: -15px;
+}
+.profile > .image-overlay {
+    position: absolute;
+    bottom: 0;
+    top: 63%;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .9);
+}
+.profile p {
+    color: #004d89;
+    font: 9px 'SanFran-Heavy';
+    letter-spacing: .2px;
+    margin-top: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.profile.selected {
+    -webkit-box-shadow: 0px 0px 39px 0px rgba(11, 72, 255, .85);
+    box-shadow: 0px 0px 39px 0px rgba(11, 72, 255, .85);
+}
+.profile.disabled {
+    opacity: 0.5;
+}
+/* End of Slideout component */
+
+.container {
+    position: absolute;
+    top: 86px;
+    width: 100%;
+    height: 682px;
+    background: #113b71;
+    /* For browsers that do not support gradients */
+    background: linear-gradient(to bottom right, #113b71, #6b1455);
+    /* Standard syntax */
+    font-family: 'SanFran-Regular';
+}
+
+h1 {
+    font: 61px/60px 'SanFran-Heavy';
+    color: #fff;
+}
+
+.subhead {
+    font: 16px 'SanFran-Heavy';
+    color: #89d0ff;
+}
+
+/* Popup library overrides */
+.popBg {background-color: transparent;}
+.popBtn {background:url('../images/gl-close.png') no-repeat; background-size: 90px 59px;width: 56px;height: 56px; background-position: 50%;top:0; left: 830px;}
+
+#isi {width: 1004px; height: 750px; left: 10px; top: 10px; border-radius: 0;}
+#isi_btn {background: url('../images/GK-ISI-close.png') no-repeat;background-size: contain;left: 950px;}
+#isi_btn.hiddenISIbutton {display:none;}
+.project-number {color: #fff; position: relative; top: 18px; left: 50px;}

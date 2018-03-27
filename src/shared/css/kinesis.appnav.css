@@ -1,0 +1,24 @@
+#header-nav {position:absolute; top:0; height:86px; width:1024px; background: #fff;z-index: 2;overflow: hidden;}
+#header-nav #logoblank {position:absolute;top: 5px; left: 445px;width:130px; height:68px; pointer-events:none;}
+#header-nav::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 57px;
+    height: 58px;
+    right: 20px;
+    top: 17px;
+
+    background: url('../images/GL-gearbutton.png') no-repeat center center;
+	background-size:contain;
+}
+
+#header-nav .link {position:absolute; display:inline-block; right:218px; padding-left:.6em; height:74px;  color:#fff; font:13px/14px HelveticaNeue-Bold; text-transform:uppercase; line-height:74px; -webkit-tap-highlight-color:rgba(255,255,255,0);}
+#header-nav .indicationslink {left:170px; width: auto;color: #fff;}
+#header-nav .prescribinginfo {left:427px; width: auto;color: #fff;}
+#header-nav .referenceslink {left:682px; width: auto;color: #fff;}
+#header-nav .helplink {left:802px; width: auto;color: #fff;}
+#header-nav span.spacer {margin:0 15px;}
+#header-nav .indicationslink.activelink {color:#2690cd;}
+#homebutton {height:56px; width:56px; background:url(../images/GK-home-icon.png) no-repeat; background-size:contain;position: absolute; left: 950px; top: 7px;}
+

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="YES" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+		<link href='../shared/css/popup.css' rel='stylesheet' type="text/css" />
+         <link rel="stylesheet" href="../shared/css/fonts.css" type="text/css">
+    	<link rel="stylesheet" href="../shared/css/common.css" type="text/css">
+        <link rel="stylesheet" href="../shared/css/pagetransistion.css" type="text/css">
+         <link href='styles/styles.css' rel='stylesheet' type="text/css" />
+	</head>
+	<body class="scaleddouble">
+		<div id="pagecontenttransition" class='intouch-ab vv-Page-1'>
+		
+			<div class='intouch-asset vv-Chart'>
+            	<div id="chartheadline" class="active">
+                    <div class='intouch-asset vv-Over-Half-of-Patient'><span>Over Half of Patients Alive at 1 Year With APDIVAN</span><br />
+    HR = 0.73; 95% Cl, 0.60-0.89, P=0.0015</div>
+				</div>
+				<div class='intouch-asset vv-Data-shown-here-are'>Data shown here are from all the patients who underwent randomization and were included in efficacy analysis (intent-to-treat population). CI=confidence interval; HR=hazard ratio; mos=months; OS=overall survival.</div>
+				<div id="tab1" class='intouch-asset vv-KM-Chart active'></div>
+                <div id="tab2" class='intouch-asset vv-KM-Chart2'></div>
+                <div id="tab3" class='intouch-asset vv-people-chart'></div>
+			</div>
+            <div id="dropdowns" class='intouch-asset vv-Dropdowns'>
+					<div class='intouch-asset vv-GENDER'>GENDER</div>
+					<div class='intouch-asset vv-PD-L1-EXPRESSION-LEV'>PD-L1 EXPRESSION LEVELS</div>
+					<div class='intouch-asset vv-SMOKER-STATUS'>SMOKER STATUS</div>
+					<div class='intouch-asset vv-PRIOR-SYSTEMIC-REGIM'>PRIOR SYSTEMIC REGIMENS</div>
+					<div class='intouch-asset vv-Dropdown1' ontouchend="popupToggle('dropdown1')"></div>
+					<div class='intouch-asset vv-Dropdown2' ontouchend="popupToggle('dropdown2')"></div>
+					<div class='intouch-asset vv-Dropdown3' ontouchend="popupToggle('dropdown3')"></div>
+					<div class='intouch-asset vv-Dropdown4' ontouchend="popupToggle('dropdown4')"></div>
+					<div id="gender" class='intouch-asset vv-Male' ontouchend="popupToggle('dropdown1')"></div>
+					<div id="pdl1" class='intouch-asset vv--1-5-' ontouchend="popupToggle('dropdown2')"></div>
+					<div id="neversmoker" class='intouch-asset vv-Never-smoker' ontouchend="popupToggle('dropdown3')"></div>
+					<div id="oneprior" class='intouch-asset vv-One-prior' ontouchend="popupToggle('dropdown4')"></div>
+				</div>
+			<div class='intouch-asset vv-CHART-buttons'>
+            	<div id="tabbutton1" class="tabbutton active" ontouchend='swapTabs("tab1", this.id)'>KAPLAN - MEIER</div>
+            	<div id="tabbutton2" class="tabbutton" ontouchend='swapTabs("tab2", this.id)'>INTERACTIVE K-M</div>
+                <div id="tabbutton3" class="tabbutton" ontouchend='swapTabs("tab3", this.id)'>1-YEAR SURVIVAL</div>
+                <div id="tabbutton4" class="tabbutton">OS BENEFIT</div>
+            </div>
+            <div class="catherineopen" ontouchend="openavi()"></div>
+            <div class="sidebarcheckmarks">
+            	<div id="checkmark1" class="checkmark" ontouchend="checkMark(this)"></div>
+            	<div id="checkmark2" class="checkmark" ontouchend="checkMark(this)"></div>
+                <div id="checkmark3" class="checkmark" ontouchend="checkMark(this)"></div>
+                <div id="checkmark4" class="checkmark" ontouchend="checkMark(this)"></div>
+                <div id="checkmark5" class="checkmark" ontouchend="checkMark(this)"></div>
+            </div>
+            <div id="sendemail" class="sendemail"></div>
+            <div id="checkmark6" class="checkmark" ontouchend="checkMark(this)"></div>
+            
+            
+            <div id="dropdown1" class="popup inactive" popBg="1" ontouchend="changeContent('gender', 'Male', this.id)">Male<br /><br />Female</div>
+            <div id="dropdown2" class="popup inactive" popBg="1" ontouchend="changeContent('pdl1', '≥ 5%', this.id)"><1%<br /><br />≥1%<br /><br />≥5%<br /><br />≥10%</div>
+            <div id="dropdown3" class="popup inactive" popBg="1" ontouchend="changeContent('neversmoker', 'Never smoker', this.id)">Never smoker<br /><br />Current/Former Smoker</div>
+            <div id="dropdown4" class="popup inactive" popBg="1" ontouchend="changeContent('oneprior', 'One prior', this.id)">One prior<br /><br />Two prior</div>
+           
+           <div id="sidebarmask" class="popup inactive">
+           		<div class="sidebarggroup main"></div>
+                <div class="sidebarggroup top"></div>
+           </div>
+           
+           <div id="menumask" class="popup inactive">
+           		<div class="menugroup top"></div>
+                <div class="menugroup right"></div>
+                <div class="menugroup bottom"></div>
+           </div>
+           
+           <div id="dropdownmask" class="popup inactive">
+           		<div class="dropdowngroup top"></div>
+                <div class="dropdowngroup right"></div>
+                <div class="dropdowngroup bottom"></div>
+           </div>
+         <div id="leftnavigationalarrow" class="arrow leftarrow" ontouchend="goPrev()"></div>
+        <div id="rightnavigationalarrow" class="arrow rightarrow" ontouchend="goNext()"></div>
+        <div class="homebutton" ontouchend="com.veeva.clm.gotoSlide('Standalone-GluVivaKinesis-home.zip', 'StandaloneGluVivaKinesisSummitExample')"></div>
+             <!-- //Global App Navigation -->
+        <div class="slideout">
+            <div class="grey-btn remotebtn"></div>
+            <ul id="swimlaneUL">
+
+            </ul>
+        </div>
+            <div id="isi" class="popup inactive button slidedown" frame="../shared/isi-frame.html" popBg="1"></div>
+            
+            <div id="rating" class="popup inactive" popBg="1">
+            	<div class="headline">What did you think of this<br />training experience?</div>
+                <div class="starcontainer">
+                	<div class="star" ontouchend="starRating(1)"></div>
+                	<div class="star" ontouchend="starRating(2)"></div>
+                    <div class="star" ontouchend="starRating(3)"></div>
+                    <div class="star" ontouchend="starRating(4)"></div>
+                    <div class="star" ontouchend="starRating(5)"></div>
+                </div>
+                <div id="ratingstext" class="ratingstext">Please select a star rating</div>
+                <div id="ratingcontinuebutton" class="ratingcontinuebutton" ontouchend="closeThisPop('rating')"></div>
+            </div>
+            <script type="text/javascript" src="../shared/js/kinesis.lib/veeva-library-4.1.js"></script>
+            <!-- <script type="text/javascript" src="../shared/js/kinesis.lib/iRep-tracking.js"></script> -->
+            <script type="text/javascript" src="../shared/js/kinesis.lib/popups.min.js"></script>
+            
+            <script type="text/javascript" src="../shared/js/jquery-3.2.0.min.js"></script>
+            <script type="text/javascript" src="../shared/js/kinesis.lib/TweenMax.min.js"></script>
+           <!-- <script type="text/javascript" src="../shared/js/html2canvas.js"></script>
+            <script type="text/javascript" src="../shared/js/remote.js"></script>-->
+            <script type="text/javascript" src="../shared/js/kinesis.appnav.js"></script>
+        
+            <script type="text/javascript" src="../shared/js/kinesis.lib/kinesisBase-v1.0.js"></script>
+            <script type="text/javascript" src="../shared/js/TileData.js"></script>
+           <!-- <script type="text/javascript" src="../shared/js/forcedISI.js"></script>-->
+             <script>
+				var zipName = "Standalone-GluVivaKinesis-aviquiz.zip";
+				var dsaId = "StandaloneGluVivaKinesisSummitExample";
+				
+				var forcedISIImplemented = false;
+				var userCanJump = true;
+				</script>
+            <script type="text/javascript" src="../shared/js/kinesis.lib/kinesisNavigation.js"></script>
+        <script>
+        	function swapTabs(tab, element){
+				var tabs = document.getElementsByClassName("intouch-asset");
+				for(i=0; i<	tabs.length; i++){
+					tabs[i].classList.remove("active")	
+				}
+				
+				var tabbuttons = document.getElementsByClassName("tabbutton");
+				for(i=0; i<	tabbuttons.length; i++){
+					tabbuttons[i].classList.remove("active")	
+				}
+				
+				if(tab==='tab2'){
+					chartheadline.classList.remove("active");
+					dropdowns.classList.add('active')
+				} else {
+					chartheadline.classList.add("active")
+					dropdowns.classList.remove('active')
+				}
+				document.getElementById(tab).classList.add("active")
+				document.getElementById(element).classList.add("active")
+			}
+			
+			function checkMark(element){
+				var checkedelements = [];
+				element.classList.toggle("checked")	;
+				checkedelements = document.getElementsByClassName("checked");
+				if(checkedelements.length !== 0){
+					document.getElementById("sendemail").classList.add("active")
+				} else {
+					document.getElementById("sendemail").classList.remove("active")	
+				}
+			}
+			
+			function changeContent(target, text, popid){
+				document.getElementById(target).innerHTML = text;
+				document.getElementById(target).classList.add("valueadded");
+				var dropdownvaluefields = document.getElementsByClassName("valueadded");
+				if (dropdownvaluefields.length > 3){
+					tab2.classList.add("updated");
+				} else {
+					tab2.classList.remove("updated");
+				}
+				closeThisPop(popid)
+			}
+			
+			function starRating(numbertofill){
+				var stars = document.getElementsByClassName("star");
+				for(i=0; i<stars.length; i++){
+					stars[i].classList.remove("filled")
+				}
+				for(i=0; i<numbertofill; i++){
+					stars[i].classList.add("filled")
+				}
+				
+				switch(numbertofill){
+					case 1:
+						ratingstext.innerHTML="Terrible"
+						break;
+					case 2:
+						ratingstext.innerHTML="Poor"
+						break;
+					case 3:
+						ratingstext.innerHTML="Average"
+						break;
+					case 4:
+						ratingstext.innerHTML="Good"
+						break;
+					case 5:
+						ratingstext.innerHTML="Great"
+						break;
+					default:
+						//nothing
+				} 
+				
+				ratingcontinuebutton.classList.add("active");
+			}
+			
+			 $('.grey-btn').on("touchend", function() {
+                $('.slideout').toggleClass('slideout-open');
+            });
+			
+        
+        </script>
+        <script type="text/javascript" src="../shared/js/slideDynamicRecapEmailRecorder.js"></script>
+         <script type="text/javascript" src="../shared/js/kinesis.lib/page-bounce.js"></script>
+    <script type="text/javascript" src="../shared/js/kinesis.lib/page-transitions.js"></script>
+    <script type='text/javascript' src='../shared/js/avi/avi-loader.js'></script>
+   
+	</body>
+</html>

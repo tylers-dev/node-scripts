@@ -1,0 +1,265 @@
+h1 {
+    font-size: 60px;
+    margin-bottom: 24px;
+}
+
+h3 {
+    color: #89d0ff;
+    font-family: "SanFran-Heavy";
+    font-size: 16px;
+    line-height: 1.45;
+    margin-bottom: 0;
+}
+
+.content {
+    color: #FFFFFF;
+    opacity: 0;
+    transition: all .5s;
+}
+
+.content.show {
+    opacity: 1;
+}
+
+.title-container {
+    background-color: #094b78;
+    padding: 26px 77px;
+    margin-bottom: 2px;
+}
+
+.title-container h1 {
+    font: 30px/30px 'HelveticaNeue-UltraLight';
+    text-transform: uppercase;
+}
+
+.content-container {
+    padding: 27px 425px 0px 51px;
+}
+
+.content-container>p {
+    font: 13px 'SanFran-Regular';
+    width: 480px;
+    margin-top: 10px;
+    letter-spacing: .4px;
+    line-height: 1.6;
+}
+
+
+/*ITEMS LIST*/
+
+.item-list {
+    display: block;
+    margin-top: 63px;
+}
+
+.item {
+    display: block;
+    float: left;
+    margin-bottom: 12px;
+}
+
+.item-3 {
+    margin-left: 8px;
+}
+
+.item-title {
+    font-family: "SanFran-Heavy";
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 0.5px
+}
+
+.item-number {
+    display: table;
+    text-align: center;
+    width: 109px;
+    height: 109px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    margin: 5px 0 0 0;
+    line-height: 34px;
+    text-align: center;
+}
+
+.item-1 .item-title {
+    padding-top: 6px;
+}
+
+.item-2 .item-title {
+    padding-top: 16px;
+}
+
+.item-3 .item-title {
+    padding-top: 16px;
+}
+
+.item-content {
+    margin-top: 19px;
+    width: 180px;
+    display: inline-block;
+}
+
+.item-content>p {
+    font: 14px/22px 'SanFran-Regular';
+    line-height: 1.4;
+}
+
+
+/*END ITEMS LIST*/
+
+
+/*ANIMATION STYLES*/
+
+.man-picture {
+    position: absolute;
+    width: 350px;
+    height: 660px;
+    right: 10px;
+    bottom: 0;
+    background: url("../../shared/images/injectionsites-img-01.png") no-repeat;
+    background-size: 100% 100%;
+    background-position-y: 22px;
+    transition: all .5s;
+    opacity: 0;
+}
+
+.man-picture.show {
+    opacity: 1;
+}
+
+.shape-1 {
+    background: url("../../shared/images/injectionsites-img-02.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 336px;
+    left: 82px;
+    width: 160px;
+    height: 110px;
+}
+
+.shape-2 {
+    background: url("../../shared/images/injectionsites-img-03.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 502px;
+    left: 68px;
+    width: 88px;
+    height: 160px;
+}
+
+.shape-3 {
+    background: url("../../shared/images/injectionsites-img-04.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 492px;
+    left: 190px;
+    width: 100px;
+    height: 146px;
+}
+
+.shape-4 {
+    background: url("../../shared/images/injectionsites-img-05.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 177px;
+    left: 18px;
+    width: 70px;
+    height: 126px;
+}
+
+.shape-5 {
+    background: url("../../shared/images/injectionsites-img-06.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 164px;
+    left: 198px;
+    width: 84px;
+    height: 110px;
+}
+
+.shapes-container {
+    position: absolute;
+    width: 350px;
+    height: 660px;
+    right: 10px;
+    bottom: 0;
+}
+
+.shapes-content-1,
+.shapes-content-2,
+.shapes-content-3 {
+    transition: all 1s;
+    opacity: 0;
+}
+
+.shapes-container.shape-selected-1 .shapes-content-1 {
+    opacity: 1;
+}
+
+.shapes-container.shape-selected-2 .shapes-content-2 {
+    opacity: 1;
+}
+
+.shapes-container.shape-selected-3 .shapes-content-3 {
+    opacity: 1;
+}
+
+.item-list.item-selected-1 .item-1 .item-number {
+    color: #153970;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+    -moz-box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+    box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+}
+
+.item-list.item-selected-1 .item-1 .item-content {
+    color: white;
+}
+
+.item-list.item-selected-2 .item-2 .item-number {
+    color: #153970;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+    -moz-box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+    box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+}
+
+.item-list.item-selected-2 .item-2 .item-content {
+    color: white;
+}
+
+.item-list.item-selected-3 .item-3 .item-number {
+    color: #153970;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+    -moz-box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+    box-shadow: 0px 0px 77px 0px rgba(113, 123, 166, 1);
+}
+
+.item-list.item-selected-3 .item-3 .item-content {
+    color: white;
+}
+
+
+/*END ANIMATION STYLES*/
+
+.slideout {
+    margin-top: 46px;
+}
+
+.slideout ul {
+    padding: 41px 0 0;
+    background: none;
+    margin: 15px 0 0 97px;
+}
+
+.slideout ul li {
+    display: inline-block;
+    margin: 26px 30px;
+    padding: 0 0 0 0;
+}

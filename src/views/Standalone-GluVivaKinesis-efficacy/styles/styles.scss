@@ -1,0 +1,108 @@
+.container {
+    background: url(../../shared/images/efficacy-refs.png) no-repeat 440px 50px / 163px, url(../../shared/images/efficacy-ellipse.png) no-repeat center 320px / 910px, linear-gradient(to bottom right, #113b71, #6b1455);
+}
+
+.left-content {
+    padding: 30px 50px;
+}
+
+.left-content h1 {
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.left-content p.subhead {
+    width: 350px;
+    line-height: 23px;
+    margin-bottom: 10px;
+}
+
+.left-content>span {
+    color: #fff;
+    font: 13px/20px 'SanFran-Regular';
+    width: 385px;
+    display: block;
+    letter-spacing: .4px;
+}
+
+.left-content .btn-weeks {
+    width: 80px;
+    padding: 56px 42px 0;
+}
+
+.left-content .btn {
+    border-radius: 50%;
+    display: block;
+    width: 76px;
+    height: 76px;
+    border: 1px solid #fff;
+    margin-bottom: 23px;
+    text-align: center;
+    color: #fff;
+    font: 13px/16px 'SanFran-Regular';
+}
+
+.left-content .btn>span {
+    display: block;
+    margin-top: 30px;
+}
+
+.left-content .btn:nth-of-type(3)>span {
+    margin-top: 25px;
+}
+
+.left-content .btn.active {
+    background: #fff;
+    box-shadow: 0px 0px 30px 0px #fff;
+}
+
+.left-content .btn.active>span {
+    color: #153970;
+    font: 13px/16px 'SanFran-Bold';
+}
+
+.chart-base {
+    position: absolute;
+    pointer-events: none;
+    left: 225px;
+    bottom: 64px;
+}
+
+.chart {
+    position: absolute;
+    pointer-events: none;
+    left: 309px;
+    bottom: 100px;
+}
+
+#chart1 {
+    left: 317px;
+}
+
+#chart2 {
+    left: 309px;
+}
+
+#chart2,
+#chart3 {
+    display: none;
+}
+
+.slideout {
+    margin-top: 46px;
+}
+
+.slideout ul {
+    padding: 41px 0 0;
+    background: none;
+    margin: 15px 0 0 97px;
+}
+
+.slideout ul li {
+    display: inline-block;
+    margin: 26px 30px;
+    padding: 0 0 0 0;
+}
+
+
+/*#endregion */
